@@ -5,6 +5,7 @@ import 'package:intern_synapsis/app/domain/domain.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/core.dart';
+import 'presentation/presentation.dart';
 
 final sl = GetIt.instance;
 
@@ -36,4 +37,7 @@ Future<void> init() async {
   /* Usecase */
   sl.registerLazySingleton(
       () => LoginUsecase(authRepository: sl<AuthRepository>()));
+
+  /*------------------> CUBITS <------------------*/
+  sl.registerFactory(() => AuthCubit(usecase: sl<LoginUsecase>()));
 }
