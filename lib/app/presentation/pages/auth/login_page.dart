@@ -29,11 +29,14 @@ class _LoginPageState extends State<LoginPage> {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         state.whenOrNull(
-          loading: () {},
+          loading: () {
+            CustomDialog.show(context, 'Loading');
+          },
           success: () {
             navigator.goToSurvey(context);
           },
           error: (message) {
+            // show snackbar
             log(message);
           },
         );
