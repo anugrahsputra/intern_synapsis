@@ -4,7 +4,7 @@ import 'package:intern_synapsis/app/core/core.dart';
 import 'package:intern_synapsis/app/data/data.dart';
 import 'package:mockito/mockito.dart';
 
-import '../helper/mock.dart';
+import '../../helper/mock.dart';
 
 void main() {
   late MockDio mockDio;
