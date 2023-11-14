@@ -22,7 +22,7 @@ class AuthProviderImpl implements AuthProvider {
     if (response.statusCode == 200) {
       return UserModel.fromJson(response.data["data"]);
     } else {
-      throw Exception("AuthProvider: failed to login");
+      throw const ServerFailure("AuthProvider: failed to login");
     }
   }
 }
