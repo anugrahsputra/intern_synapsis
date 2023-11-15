@@ -18,11 +18,7 @@ void main() {
   group("getAllSurveys()", () {
     test("should returns list of surveys when successful", () async {
       Response response = Response(
-          requestOptions: RequestOptions(path: ""),
-          statusCode: 200,
-          data: [
-            /* test data here */
-          ]);
+          requestOptions: RequestOptions(path: ""), statusCode: 200, data: []);
 
       when(dio.get(ApiPath.survey, options: anyNamed("options")))
           .thenAnswer((_) async => Future.value(response));
@@ -61,24 +57,24 @@ void main() {
         },
       );
 
-      when(dio.get("${ApiPath.survey}/testId", options: anyNamed("options")))
+      when(dio.get("${ApiPath.survey}/id", options: anyNamed("options")))
           .thenAnswer((_) async => Future.value(response));
 
-      await surveyProvider.getSurvey('testId');
+      await surveyProvider.getSurvey('id');
 
-      verify(dio.get("${ApiPath.survey}/testId", options: anyNamed("options")));
+      verify(dio.get("${ApiPath.survey}/id", options: anyNamed("options")));
     });
 
     test("should throws server failure when failed", () async {
       ServerFailure failure =
           const ServerFailure("SurveyProvider: failed to get survey");
 
-      when(dio.get("${ApiPath.survey}/testId",
+      when(dio.get("${ApiPath.survey}/id",
               options: anyNamed('options'),
               queryParameters: anyNamed('queryParameters')))
           .thenThrow(failure);
 
-      expect(() => surveyProvider.getSurvey('testId'), throwsA(failure));
+      expect(() => surveyProvider.getSurvey('id'), throwsA(failure));
     });
   });
 }
