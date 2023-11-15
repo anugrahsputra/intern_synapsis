@@ -8,17 +8,34 @@ import '../../helper/mock.dart';
 
 void main() {
   late MockDio dio;
+  late MockLocalProvider mockLocalProvider;
   late SurveyProvider surveyProvider;
 
   setUp(() {
     dio = MockDio();
-    surveyProvider = SurveyProviderImpl(dio: dio);
+    mockLocalProvider = MockLocalProvider();
+    surveyProvider =
+        SurveyProviderImpl(dio: dio, localProvider: mockLocalProvider);
   });
 
   group("getAllSurveys()", () {
     test("should returns list of surveys when successful", () async {
       Response response = Response(
-          requestOptions: RequestOptions(path: ""), statusCode: 200, data: []);
+          requestOptions: RequestOptions(path: ""),
+          statusCode: 200,
+          data: {
+            'data': [
+              {
+                "id": "id",
+                "survey_name": "survey_name",
+                "status": 1,
+                "total_respondent": 1,
+                "created_at": "created_at",
+                "updated_at": "updated_at",
+                "questions": [],
+              },
+            ],
+          });
 
       when(dio.get(ApiPath.survey, options: anyNamed("options")))
           .thenAnswer((_) async => Future.value(response));
@@ -44,18 +61,19 @@ void main() {
   group("getSurvey()", () {
     test("should returns a survey when successful", () async {
       Response response = Response(
-        requestOptions: RequestOptions(path: ""),
-        statusCode: 200,
-        data: {
-          "id": "id",
-          "survey_name": "survey_name",
-          "status": 1,
-          "total_respondent": 1,
-          "created_at": "created_at",
-          "updated_at": "updated_at",
-          "questions": [],
-        },
-      );
+          requestOptions: RequestOptions(path: ""),
+          statusCode: 200,
+          data: {
+            'data': {
+              "id": "id",
+              "survey_name": "survey_name",
+              "status": 1,
+              "total_respondent": 1,
+              "created_at": "created_at",
+              "updated_at": "updated_at",
+              "questions": [],
+            },
+          });
 
       when(dio.get("${ApiPath.survey}/id", options: anyNamed("options")))
           .thenAnswer((_) async => Future.value(response));

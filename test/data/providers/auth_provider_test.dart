@@ -8,11 +8,14 @@ import '../../helper/mock.dart';
 
 void main() {
   late MockDio mockDio;
+  late MockLocalProvider mockLocalProvider;
   late AuthProvider authProvider;
 
   setUp(() {
     mockDio = MockDio();
-    authProvider = AuthProviderImpl(dio: mockDio);
+    mockLocalProvider = MockLocalProvider();
+    authProvider =
+        AuthProviderImpl(dio: mockDio, localProvider: mockLocalProvider);
   });
 
   const tEmail = "email@email.com";

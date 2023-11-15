@@ -15,6 +15,7 @@ export 'mock.mocks.dart';
   /* Provider */
   MockSpec<AuthProvider>(),
   MockSpec<SurveyProvider>(),
+  MockSpec<LocalProvider>(),
 
   /*-------------> Domain <-------------*/
   /* Repository */

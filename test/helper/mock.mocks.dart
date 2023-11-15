@@ -1391,6 +1391,21 @@ class MockSurveyProvider extends _i1.Mock implements _i7.SurveyProvider {
       ) as _i11.Future<_i7.SurveyModel>);
 }
 
+/// A class which mocks [LocalProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLocalProvider extends _i1.Mock implements _i7.LocalProvider {
+  @override
+  _i11.Future<bool> setToken(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #setToken,
+          [token],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+}
+
 /// A class which mocks [AuthRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
