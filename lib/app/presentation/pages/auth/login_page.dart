@@ -20,8 +20,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final AppNavigator navigator = sl<AppNavigator>();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController =
+      TextEditingController(text: "budimanobsight@gmail.com");
+  final TextEditingController passwordController =
+      TextEditingController(text: "password");
   bool saveCred = false;
 
   @override
