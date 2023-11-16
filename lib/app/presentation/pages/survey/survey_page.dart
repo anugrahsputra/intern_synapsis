@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
+import '../../../core/core.dart';
 import '../../../domain/domain.dart';
 import '../../presentation.dart';
+
+part 'survey_page.component.dart';
 
 class SurveyPage extends StatefulWidget {
   const SurveyPage({super.key});
@@ -25,6 +32,16 @@ class _SurveyPageState extends State<SurveyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text(
+          'Halaman Survey',
+          style: GoogleFonts.inter(
+            fontSize: 21,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
       body: BlocBuilder<SurveyCubit, SurveyState>(
         builder: (context, state) {
           return state.when(
@@ -38,7 +55,7 @@ class _SurveyPageState extends State<SurveyPage> {
                 itemCount: surveys.length,
                 itemBuilder: (context, index) {
                   final survey = surveys[index];
-                  return Text(survey.surveyName ?? 'Not found');
+                  return ListSurveyView(survey: survey);
                 },
               );
             },
