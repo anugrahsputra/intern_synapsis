@@ -24,4 +24,14 @@ class SurveyCubit extends Cubit<SurveyState> {
       emit(SurveyState.allSurveyLoaded(survey));
     });
   }
+
+  Future<void> getQuestion(String id) async {
+    emit(const SurveyState.loading());
+    final result = await getSurveyUsecase.call(id);
+    result.fold((fail) {
+      emit(SurveyState.error(fail.message));
+    }, (survey) {
+      emit(SurveyState.surveyLoaded(survey));
+    });
+  }
 }

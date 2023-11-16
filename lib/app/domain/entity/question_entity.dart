@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../core/core.dart';
 import '../domain.dart';
 
 class QuestionEntity extends Equatable {
@@ -7,7 +8,7 @@ class QuestionEntity extends Equatable {
   final int? questionNumber;
   final String? surveyId;
   final String? section;
-  final String? inputType;
+  final InputType? inputType;
   final String? questionName;
   final String? questionSubject;
   final List<OptionEntity>? options;

@@ -38,4 +38,12 @@ class AppNavigator {
       (route) => false,
     );
   }
+
+  void goToSurveyQuestion(BuildContext context, {required String surveyId}) {
+    if (!canNavigate(context)) return;
+
+    Navigator.of(context).pushNamed(AppPage.surveyQuestion, arguments: {
+      "surveyId": surveyId,
+    });
+  }
 }

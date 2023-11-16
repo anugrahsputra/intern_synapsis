@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 
+import '../../core/core.dart';
 import '../../domain/domain.dart';
 import '../data.dart';
 
@@ -8,7 +9,7 @@ class QuestionModel extends Equatable {
   final int? questionNumber;
   final String? surveyId;
   final String? section;
-  final String? inputType;
+  final InputType? inputType;
   final String? questionName;
   final String? questionSubject;
   final List<OptionModel>? options;
@@ -30,7 +31,7 @@ class QuestionModel extends Equatable {
       questionNumber: json['question_number'],
       surveyId: json['survey_id'],
       section: json['section'],
-      inputType: json['input_type'],
+      inputType: stringToInputType(json['input_type']),
       questionName: json['question_name'],
       questionSubject: json['question_subject'],
       options: json['options'] != null
@@ -47,7 +48,7 @@ class QuestionModel extends Equatable {
       'question_number': questionNumber,
       'survey_id': surveyId,
       'section': section,
-      'input_type': inputType,
+      'input_type': inputTypeToString(inputType),
       'question_name': questionName,
       'question_subject': questionSubject,
       'options': options ?? options?.map((option) => option.toJson()).toList()

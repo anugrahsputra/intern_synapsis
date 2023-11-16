@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 
 import '../../../core/core.dart';
 import '../../../domain/domain.dart';
+import '../../../injection.dart';
 import '../../presentation.dart';
 
 part 'survey_page.component.dart';
@@ -19,6 +20,8 @@ class SurveyPage extends StatefulWidget {
 }
 
 class _SurveyPageState extends State<SurveyPage> {
+  final AppNavigator navigate = sl<AppNavigator>();
+
   _getData() {
     context.read<SurveyCubit>().getAllSurveys();
   }
@@ -55,7 +58,11 @@ class _SurveyPageState extends State<SurveyPage> {
                 itemCount: surveys.length,
                 itemBuilder: (context, index) {
                   final survey = surveys[index];
-                  return ListSurveyView(survey: survey);
+                  return ListSurveyView(
+                    survey: survey,
+                    onTap: () => navigate.goToSurveyQuestion(context,
+                        surveyId: survey.id!),
+                  );
                 },
               );
             },
