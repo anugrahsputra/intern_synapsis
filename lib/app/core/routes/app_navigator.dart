@@ -21,7 +21,9 @@ class AppNavigator {
   }
 
   void back<T>(BuildContext context, {T? result}) {
-    if (canPop(context)) Navigator.of(context).pop(context);
+    if (canPop(context)) {
+      Navigator.of(context).pop(result);
+    }
   }
 
   void goToLogin(BuildContext context) {

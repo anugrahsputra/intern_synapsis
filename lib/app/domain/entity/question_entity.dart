@@ -1,10 +1,12 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:equatable/equatable.dart';
 
 import '../../core/core.dart';
 import '../domain.dart';
 
 class QuestionEntity extends Equatable {
-  final String? id;
+  late String? id;
   final int? questionNumber;
   final String? surveyId;
   final String? section;
@@ -13,7 +15,7 @@ class QuestionEntity extends Equatable {
   final String? questionSubject;
   final List<OptionEntity>? options;
 
-  const QuestionEntity({
+  QuestionEntity({
     required this.id,
     required this.questionNumber,
     required this.surveyId,

@@ -48,7 +48,7 @@ class _SurveyPageState extends State<SurveyPage> {
       body: BlocBuilder<SurveyCubit, SurveyState>(
         builder: (context, state) {
           return state.when(
-            initial: () => const SizedBox.shrink(),
+            initial: () => const Text('initial'),
             loading: () => const Center(
               child: CircularProgressIndicator(),
             ),
@@ -66,7 +66,7 @@ class _SurveyPageState extends State<SurveyPage> {
                 },
               );
             },
-            surveyLoaded: (survey) => const SizedBox(),
+            surveyLoaded: (survey) => const Text('hello'),
             error: (message) => Text(message),
           );
         },

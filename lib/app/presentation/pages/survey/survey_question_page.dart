@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -5,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/core.dart';
 import '../../../domain/domain.dart';
+import '../../../injection.dart';
 import '../../presentation.dart';
 
 part 'survey_question_page.component.dart';
@@ -20,6 +23,8 @@ class SurveyQuestionPage extends StatefulWidget {
 
 class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
   late PageController _pageController;
+  int _currentPage = 0;
+  final AppNavigator navigate = sl<AppNavigator>();
 
   @override
   void initState() {
@@ -39,18 +44,29 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
             builder: (context, state) {
               return state.maybeWhen(
                 surveyLoaded: (survey) {
-                  return PopupMenuButton(
-                    onSelected: (index) {
-                      _pageController.jumpToPage(index);
-                    },
-                    itemBuilder: (context) {
-                      return List.generate(survey.questions!.length, (index) {
-                        return PopupMenuItem(
-                          value: index,
-                          child: Text('Question ${index + 1}'),
-                        );
-                      });
-                    },
+                  return Container(
+                    margin: const EdgeInsets.only(right: 16),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xff121212),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(children: [
+                      const Icon(
+                        Icons.list_alt_outlined,
+                        color: Colors.white,
+                      ),
+                      const Gap(4),
+                      Text(
+                        '${_currentPage + 1}/${survey.questions!.length}',
+                        style: GoogleFonts.inter(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      )
+                    ]),
                   );
                 },
                 orElse: () => const SizedBox.shrink(),
@@ -74,6 +90,11 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
                     child: PageView.builder(
                       controller: _pageController,
                       itemCount: survey.questions?.length,
+                      onPageChanged: (page) {
+                        setState(() {
+                          _currentPage = page;
+                        });
+                      },
                       itemBuilder: (context, index) {
                         QuestionEntity? question = survey.questions?[index];
                         return QuestionView(
@@ -96,6 +117,9 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
                             text: "Back",
                             textColor: const Color(0xff1FA0C9),
                             onTap: () {
+                              if (_currentPage <= 0) {
+                                Navigator.of(context).pop();
+                              }
                               _pageController.previousPage(
                                 duration: const Duration(milliseconds: 300),
                                 curve: Curves.easeInOut,
@@ -129,34 +153,6 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
           );
         },
       ),
-    );
-  }
-
-  Row _buildButtons() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CustomButton(
-          text: "Back",
-          textColor: const Color(0xff1FA0C9),
-          onTap: () {
-            _pageController.previousPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
-        CustomButton(
-          text: "Back",
-          textColor: const Color(0xff1FA0C9),
-          onTap: () {
-            _pageController.nextPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-            );
-          },
-        ),
-      ],
     );
   }
 }

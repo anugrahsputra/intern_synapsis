@@ -45,7 +45,8 @@ class BuildQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 14),
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -84,10 +85,17 @@ class _BuildAnswerState extends State<BuildAnswer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 14),
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text('Answer',
+              style: GoogleFonts.inter(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              )),
+          const Gap(12),
           ...widget.question.options!.map((option) {
             return Row(
               children: [
@@ -96,13 +104,23 @@ class _BuildAnswerState extends State<BuildAnswer> {
                     horizontal: VisualDensity.minimumDensity,
                   ),
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  value: option.id!,
+                  value: option.optionName!,
                   groupValue: widget.question.id,
-                  onChanged: (String? value) {
-                    setState(() {});
+                  onChanged: (value) {
+                    log(value!);
+                    setState(() {
+                      widget.question.id = value;
+                    });
                   },
                 ),
-                Text(option.optionName!),
+                const Gap(8),
+                Text(
+                  option.optionName!,
+                  style: GoogleFonts.inter(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ],
             );
           }).toList(),
@@ -120,6 +138,7 @@ class TimerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width * 0.45,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 9),
       decoration: BoxDecoration(
         border: Border.all(
