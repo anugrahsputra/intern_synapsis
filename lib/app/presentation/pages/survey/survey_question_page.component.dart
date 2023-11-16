@@ -27,8 +27,27 @@ class _QuestionViewState extends State<QuestionView> {
         if (inputType == InputType.radioButton) ...[
           BuildAnswer(question: widget.question),
         ] else ...[
-          const TextField(
-            decoration: InputDecoration(border: OutlineInputBorder()),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Answer',
+                    style: GoogleFonts.inter(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    )),
+                const Gap(12),
+                const TextField(
+                  maxLines: 10,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Tulis Jawabanmu disini",
+                  ),
+                ),
+              ],
+            ),
           ),
         ]
       ],
@@ -47,6 +66,7 @@ class BuildQuestion extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
