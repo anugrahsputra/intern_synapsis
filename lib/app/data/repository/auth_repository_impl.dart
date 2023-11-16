@@ -23,4 +23,16 @@ class AuthRepositoryImpl implements AuthRepository {
       return const Left(ConnectionFailure('Connection Failure'));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> logout() async {
+    try {
+      final result = await authProvider.logout();
+      return Right(result);
+    } on ServerException {
+      return const Left(ServerFailure('Something went wrong'));
+    } on SocketException {
+      return const Left(ConnectionFailure('Connection Failure'));
+    }
+  }
 }

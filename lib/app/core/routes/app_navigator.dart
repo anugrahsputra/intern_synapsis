@@ -29,7 +29,19 @@ class AppNavigator {
   void goToLogin(BuildContext context) {
     if (!canNavigate(context)) return;
 
-    Navigator.of(context).pushNamed(AppPage.login);
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      AppPage.login,
+      (route) => false,
+    );
+  }
+
+  void goToSplash(BuildContext context) {
+    if (!canNavigate(context)) return;
+
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      AppPage.splash,
+      (route) => false,
+    );
   }
 
   void goToSurvey(BuildContext context) {

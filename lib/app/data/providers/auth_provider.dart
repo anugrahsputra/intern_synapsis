@@ -7,6 +7,7 @@ import '../data.dart';
 
 abstract class AuthProvider {
   Future<UserModel> login(String email, String password);
+  Future<void> logout();
 }
 
 class AuthProviderImpl implements AuthProvider {
@@ -36,6 +37,19 @@ class AuthProviderImpl implements AuthProvider {
       return UserModel.fromJson(response.data["data"]);
     } else {
       throw const ServerFailure("AuthProvider: failed to login");
+    }
+  }
+
+  @override
+  Future<void> logout() async {
+    final response = await dio.post(
+      ApiPath.logout,
+    );
+
+    if (response.statusCode == 200) {
+      await localProvider.clear();
+    } else {
+      throw const ServerFailure("AuthProvider: failed to logout");
     }
   }
 }

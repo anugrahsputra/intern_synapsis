@@ -34,41 +34,56 @@ class _SurveyPageState extends State<SurveyPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'Halaman Survey',
-          style: GoogleFonts.inter(
-            fontSize: 21,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-      body: BlocBuilder<SurveyCubit, SurveyState>(
-        builder: (context, state) {
-          return state.when(
-            initial: () => const Text('initial'),
-            loading: () => const Center(
-              child: CircularProgressIndicator(),
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          loading: () => CustomDialog.show(context),
+          initial: () => navigate.goToSplash(context),
+        );
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          title: Text(
+            'Halaman Survey',
+            style: GoogleFonts.inter(
+              fontSize: 21,
+              fontWeight: FontWeight.w500,
             ),
-            loaded: (survey) {
-              List<SurveyEntity>? surveys = survey;
-              return ListView.builder(
-                itemCount: surveys.length,
-                itemBuilder: (context, index) {
-                  final survey = surveys[index];
-                  return ListSurveyView(
-                    survey: survey,
-                    onTap: () => navigate.goToSurveyQuestion(context,
-                        surveyId: survey.id!),
-                  );
+          ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  context.read<AuthCubit>().logout();
                 },
-              );
-            },
-            error: (message) => Text(message),
-          );
-        },
+                icon: const Icon(Icons.logout))
+          ],
+        ),
+        body: BlocBuilder<SurveyCubit, SurveyState>(
+          builder: (context, state) {
+            return state.when(
+              initial: () => const Text('initial'),
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              loaded: (survey) {
+                List<SurveyEntity>? surveys = survey;
+                return ListView.builder(
+                  itemCount: surveys.length,
+                  itemBuilder: (context, index) {
+                    final survey = surveys[index];
+                    return ListSurveyView(
+                      survey: survey,
+                      onTap: () => navigate.goToSurveyQuestion(context,
+                          surveyId: survey.id!),
+                    );
+                  },
+                );
+              },
+              error: (message) => Text(message),
+            );
+          },
+        ),
       ),
     );
   }

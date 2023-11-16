@@ -1349,6 +1349,16 @@ class MockAuthProvider extends _i1.Mock implements _i7.AuthProvider {
           ),
         )),
       ) as _i11.Future<_i7.UserModel>);
+
+  @override
+  _i11.Future<void> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
 }
 
 /// A class which mocks [SurveyProvider].
@@ -1404,6 +1414,26 @@ class MockLocalProvider extends _i1.Mock implements _i7.LocalProvider {
         returnValue: _i11.Future<bool>.value(false),
         returnValueForMissingStub: _i11.Future<bool>.value(false),
       ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> isLoggedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isLoggedIn,
+          [],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
 }
 
 /// A class which mocks [AuthRepository].
@@ -1448,6 +1478,31 @@ class MockAuthRepository extends _i1.Mock implements _i9.AuthRepository {
           ),
         )),
       ) as _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>);
+
+  @override
+  _i11.Future<_i8.Either<_i14.Failure, void>> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i11.Future<_i8.Either<_i14.Failure, void>>.value(
+            _FakeEither_7<_i14.Failure, void>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i11.Future<_i8.Either<_i14.Failure, void>>.value(
+                _FakeEither_7<_i14.Failure, void>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i11.Future<_i8.Either<_i14.Failure, void>>);
 }
 
 /// A class which mocks [SurveyRepository].

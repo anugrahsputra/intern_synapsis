@@ -25,14 +25,14 @@ Future<void> init() async {
 
   /*-------------------> CORE <-------------------*/
   sl.registerSingleton<AppNavigator>(AppNavigator());
-  sl.registerLazySingleton<LocalProvider>(
-      () => LocalProviderImpl(sharedPreferences: sharedPref));
 
   /*------------------> DATA <------------------*/
   sl.registerLazySingleton<AuthProvider>(() =>
       AuthProviderImpl(dio: sl<Dio>(), localProvider: sl<LocalProvider>()));
   sl.registerLazySingleton<SurveyProvider>(() =>
       SurveyProviderImpl(dio: sl<Dio>(), localProvider: sl<LocalProvider>()));
+  sl.registerLazySingleton<LocalProvider>(
+      () => LocalProviderImpl(sharedPreferences: sharedPref));
 
   /*------------------> DOMAIN <------------------*/
   /* Repository */
@@ -40,12 +40,16 @@ Future<void> init() async {
     () => AuthRepositoryImpl(authProvider: sl<AuthProvider>()),
   );
   sl.registerLazySingleton<SurveyRepository>(
-      () => SurveyRepositoryImpl(surveyProvider: sl<SurveyProvider>()));
+    () => SurveyRepositoryImpl(surveyProvider: sl<SurveyProvider>()),
+  );
 
   /* Usecase */
   sl.registerLazySingleton(
     () => LoginUsecase(authRepository: sl<AuthRepository>()),
   );
+  sl.registerLazySingleton(
+      () => LogoutUsecase(authRepository: sl<AuthRepository>()));
+
   sl.registerLazySingleton(
     () => GetAllSurveyUsecase(repository: sl<SurveyRepository>()),
   );
@@ -54,7 +58,12 @@ Future<void> init() async {
   );
 
   /*------------------> CUBITS <------------------*/
-  sl.registerFactory(() => AuthCubit(usecase: sl<LoginUsecase>()));
+  sl.registerFactory(
+    () => AuthCubit(
+      loginUsecase: sl<LoginUsecase>(),
+      logoutUsecase: sl<LogoutUsecase>(),
+    ),
+  );
   sl.registerFactory(
     () => SurveyCubit(
       getAllSurveyUsecase: sl<GetAllSurveyUsecase>(),

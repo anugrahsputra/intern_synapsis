@@ -4,9 +4,10 @@ import '../../presentation/presentation.dart';
 import '../core.dart';
 
 abstract class AppRoute {
-  static String get initial => AppPage.login;
+  static String get initial => AppPage.splash;
 
   static final Map<String, Widget Function(BuildContext context)> routes = {
+    AppPage.splash: (context) => const SplashScreen(),
     AppPage.login: (context) => const LoginPage(),
     AppPage.survey: (context) => const SurveyPage(),
     AppPage.surveyQuestion: (context) {
