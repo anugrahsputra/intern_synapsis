@@ -52,7 +52,7 @@ class _SurveyPageState extends State<SurveyPage> {
             loading: () => const Center(
               child: CircularProgressIndicator(),
             ),
-            allSurveyLoaded: (survey) {
+            loaded: (survey) {
               List<SurveyEntity>? surveys = survey;
               return ListView.builder(
                 itemCount: surveys.length,
@@ -66,7 +66,6 @@ class _SurveyPageState extends State<SurveyPage> {
                 },
               );
             },
-            surveyLoaded: (survey) => const Text('hello'),
             error: (message) => Text(message),
           );
         },

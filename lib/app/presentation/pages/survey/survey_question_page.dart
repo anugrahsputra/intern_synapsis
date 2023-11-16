@@ -30,7 +30,7 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
   void initState() {
     super.initState();
     _pageController = PageController();
-    context.read<SurveyCubit>().getQuestion(widget.surveyId);
+    context.read<SurveyQuestionCubit>().getQuestion(widget.surveyId);
   }
 
   @override
@@ -40,33 +40,36 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
         automaticallyImplyLeading: false,
         title: const TimerView(),
         actions: [
-          BlocBuilder<SurveyCubit, SurveyState>(
+          BlocBuilder<SurveyQuestionCubit, SurveyQuestionState>(
             builder: (context, state) {
               return state.maybeWhen(
-                surveyLoaded: (survey) {
-                  return Container(
-                    margin: const EdgeInsets.only(right: 16),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xff121212),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Row(children: [
-                      const Icon(
-                        Icons.list_alt_outlined,
-                        color: Colors.white,
+                loaded: (survey) {
+                  return InkWell(
+                    onTap: () {},
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 16),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xff121212),
+                        borderRadius: BorderRadius.circular(4),
                       ),
-                      const Gap(4),
-                      Text(
-                        '${_currentPage + 1}/${survey.questions!.length}',
-                        style: GoogleFonts.inter(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
+                      child: Row(children: [
+                        const Icon(
+                          Icons.list_alt_outlined,
                           color: Colors.white,
                         ),
-                      )
-                    ]),
+                        const Gap(4),
+                        Text(
+                          '${_currentPage + 1}/${survey.questions!.length}',
+                          style: GoogleFonts.inter(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                          ),
+                        )
+                      ]),
+                    ),
                   );
                 },
                 orElse: () => const SizedBox.shrink(),
@@ -75,15 +78,13 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
           )
         ],
       ),
-      body: BlocBuilder<SurveyCubit, SurveyState>(
+      body: BlocBuilder<SurveyQuestionCubit, SurveyQuestionState>(
         builder: (context, state) {
           return state.when(
-            initial: () => const SizedBox.shrink(),
             loading: () => const Center(
               child: CircularProgressIndicator(),
             ),
-            allSurveyLoaded: (_) => const SizedBox.shrink(),
-            surveyLoaded: (survey) {
+            loaded: (survey) {
               return Column(
                 children: [
                   Expanded(
@@ -118,7 +119,7 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
                             textColor: const Color(0xff1FA0C9),
                             onTap: () {
                               if (_currentPage <= 0) {
-                                Navigator.of(context).pop();
+                                navigate.back(context);
                               }
                               _pageController.previousPage(
                                 duration: const Duration(milliseconds: 300),
@@ -149,7 +150,7 @@ class _SurveyQuestionPageState extends State<SurveyQuestionPage> {
                 ],
               );
             },
-            error: (message) => Text(message),
+            error: () => const Text('something went wrong'),
           );
         },
       ),

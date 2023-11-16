@@ -58,7 +58,8 @@ Future<void> init() async {
   sl.registerFactory(
     () => SurveyCubit(
       getAllSurveyUsecase: sl<GetAllSurveyUsecase>(),
-      getSurveyUsecase: sl<GetSurveyUsecase>(),
     ),
   );
+  sl.registerFactory(
+      () => SurveyQuestionCubit(getSurveyUsecase: sl<GetSurveyUsecase>()));
 }

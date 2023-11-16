@@ -8,11 +8,9 @@ part 'survey_state.dart';
 
 class SurveyCubit extends Cubit<SurveyState> {
   final GetAllSurveyUsecase getAllSurveyUsecase;
-  final GetSurveyUsecase getSurveyUsecase;
 
   SurveyCubit({
     required this.getAllSurveyUsecase,
-    required this.getSurveyUsecase,
   }) : super(const SurveyState.initial());
 
   Future<void> getAllSurveys() async {
@@ -21,17 +19,7 @@ class SurveyCubit extends Cubit<SurveyState> {
     result.fold((fail) {
       emit(SurveyState.error(fail.message));
     }, (survey) {
-      emit(SurveyState.allSurveyLoaded(survey));
-    });
-  }
-
-  Future<void> getQuestion(String id) async {
-    emit(const SurveyState.loading());
-    final result = await getSurveyUsecase.call(id);
-    result.fold((fail) {
-      emit(SurveyState.error(fail.message));
-    }, (survey) {
-      emit(SurveyState.surveyLoaded(survey));
+      emit(SurveyState.loaded(survey));
     });
   }
 }

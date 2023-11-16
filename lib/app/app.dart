@@ -18,6 +18,9 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<SurveyCubit>(),
         ),
+        BlocProvider(
+          create: (context) => sl<SurveyQuestionCubit>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Internship challenge',

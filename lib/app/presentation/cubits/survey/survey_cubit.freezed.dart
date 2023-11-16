@@ -20,8 +20,7 @@ mixin _$SurveyState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SurveyEntity> surveyList) allSurveyLoaded,
-    required TResult Function(SurveyEntity survey) surveyLoaded,
+    required TResult Function(List<SurveyEntity> surveyList) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,8 +28,7 @@ mixin _$SurveyState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult? Function(SurveyEntity survey)? surveyLoaded,
+    TResult? Function(List<SurveyEntity> surveyList)? loaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,8 +36,7 @@ mixin _$SurveyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult Function(SurveyEntity survey)? surveyLoaded,
+    TResult Function(List<SurveyEntity> surveyList)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -48,8 +45,7 @@ mixin _$SurveyState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_AllSurveyLoaded value) allSurveyLoaded,
-    required TResult Function(_SurveyLoaded value) surveyLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -57,8 +53,7 @@ mixin _$SurveyState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult? Function(_SurveyLoaded value)? surveyLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,8 +61,7 @@ mixin _$SurveyState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult Function(_SurveyLoaded value)? surveyLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -132,8 +126,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SurveyEntity> surveyList) allSurveyLoaded,
-    required TResult Function(SurveyEntity survey) surveyLoaded,
+    required TResult Function(List<SurveyEntity> surveyList) loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -144,8 +137,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult? Function(SurveyEntity survey)? surveyLoaded,
+    TResult? Function(List<SurveyEntity> surveyList)? loaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -156,8 +148,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult Function(SurveyEntity survey)? surveyLoaded,
+    TResult Function(List<SurveyEntity> surveyList)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -172,8 +163,7 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_AllSurveyLoaded value) allSurveyLoaded,
-    required TResult Function(_SurveyLoaded value) surveyLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -184,8 +174,7 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult? Function(_SurveyLoaded value)? surveyLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -196,8 +185,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult Function(_SurveyLoaded value)? surveyLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -252,8 +240,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SurveyEntity> surveyList) allSurveyLoaded,
-    required TResult Function(SurveyEntity survey) surveyLoaded,
+    required TResult Function(List<SurveyEntity> surveyList) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -264,8 +251,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult? Function(SurveyEntity survey)? surveyLoaded,
+    TResult? Function(List<SurveyEntity> surveyList)? loaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -276,8 +262,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult Function(SurveyEntity survey)? surveyLoaded,
+    TResult Function(List<SurveyEntity> surveyList)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -292,8 +277,7 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_AllSurveyLoaded value) allSurveyLoaded,
-    required TResult Function(_SurveyLoaded value) surveyLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -304,8 +288,7 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult? Function(_SurveyLoaded value)? surveyLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -316,8 +299,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult Function(_SurveyLoaded value)? surveyLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -333,20 +315,20 @@ abstract class _Loading implements SurveyState {
 }
 
 /// @nodoc
-abstract class _$$AllSurveyLoadedImplCopyWith<$Res> {
-  factory _$$AllSurveyLoadedImplCopyWith(_$AllSurveyLoadedImpl value,
-          $Res Function(_$AllSurveyLoadedImpl) then) =
-      __$$AllSurveyLoadedImplCopyWithImpl<$Res>;
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SurveyEntity> surveyList});
 }
 
 /// @nodoc
-class __$$AllSurveyLoadedImplCopyWithImpl<$Res>
-    extends _$SurveyStateCopyWithImpl<$Res, _$AllSurveyLoadedImpl>
-    implements _$$AllSurveyLoadedImplCopyWith<$Res> {
-  __$$AllSurveyLoadedImplCopyWithImpl(
-      _$AllSurveyLoadedImpl _value, $Res Function(_$AllSurveyLoadedImpl) _then)
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$SurveyStateCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -354,7 +336,7 @@ class __$$AllSurveyLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? surveyList = null,
   }) {
-    return _then(_$AllSurveyLoadedImpl(
+    return _then(_$LoadedImpl(
       null == surveyList
           ? _value._surveyList
           : surveyList // ignore: cast_nullable_to_non_nullable
@@ -365,8 +347,8 @@ class __$$AllSurveyLoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
-  const _$AllSurveyLoadedImpl(final List<SurveyEntity> surveyList)
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl(final List<SurveyEntity> surveyList)
       : _surveyList = surveyList;
 
   final List<SurveyEntity> _surveyList;
@@ -379,14 +361,14 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
 
   @override
   String toString() {
-    return 'SurveyState.allSurveyLoaded(surveyList: $surveyList)';
+    return 'SurveyState.loaded(surveyList: $surveyList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AllSurveyLoadedImpl &&
+            other is _$LoadedImpl &&
             const DeepCollectionEquality()
                 .equals(other._surveyList, _surveyList));
   }
@@ -398,20 +380,18 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AllSurveyLoadedImplCopyWith<_$AllSurveyLoadedImpl> get copyWith =>
-      __$$AllSurveyLoadedImplCopyWithImpl<_$AllSurveyLoadedImpl>(
-          this, _$identity);
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SurveyEntity> surveyList) allSurveyLoaded,
-    required TResult Function(SurveyEntity survey) surveyLoaded,
+    required TResult Function(List<SurveyEntity> surveyList) loaded,
     required TResult Function(String message) error,
   }) {
-    return allSurveyLoaded(surveyList);
+    return loaded(surveyList);
   }
 
   @override
@@ -419,11 +399,10 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult? Function(SurveyEntity survey)? surveyLoaded,
+    TResult? Function(List<SurveyEntity> surveyList)? loaded,
     TResult? Function(String message)? error,
   }) {
-    return allSurveyLoaded?.call(surveyList);
+    return loaded?.call(surveyList);
   }
 
   @override
@@ -431,13 +410,12 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult Function(SurveyEntity survey)? surveyLoaded,
+    TResult Function(List<SurveyEntity> surveyList)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (allSurveyLoaded != null) {
-      return allSurveyLoaded(surveyList);
+    if (loaded != null) {
+      return loaded(surveyList);
     }
     return orElse();
   }
@@ -447,11 +425,10 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_AllSurveyLoaded value) allSurveyLoaded,
-    required TResult Function(_SurveyLoaded value) surveyLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
-    return allSurveyLoaded(this);
+    return loaded(this);
   }
 
   @override
@@ -459,11 +436,10 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult? Function(_SurveyLoaded value)? surveyLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
-    return allSurveyLoaded?.call(this);
+    return loaded?.call(this);
   }
 
   @override
@@ -471,176 +447,23 @@ class _$AllSurveyLoadedImpl implements _AllSurveyLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult Function(_SurveyLoaded value)? surveyLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (allSurveyLoaded != null) {
-      return allSurveyLoaded(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _AllSurveyLoaded implements SurveyState {
-  const factory _AllSurveyLoaded(final List<SurveyEntity> surveyList) =
-      _$AllSurveyLoadedImpl;
+abstract class _Loaded implements SurveyState {
+  const factory _Loaded(final List<SurveyEntity> surveyList) = _$LoadedImpl;
 
   List<SurveyEntity> get surveyList;
   @JsonKey(ignore: true)
-  _$$AllSurveyLoadedImplCopyWith<_$AllSurveyLoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SurveyLoadedImplCopyWith<$Res> {
-  factory _$$SurveyLoadedImplCopyWith(
-          _$SurveyLoadedImpl value, $Res Function(_$SurveyLoadedImpl) then) =
-      __$$SurveyLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({SurveyEntity survey});
-}
-
-/// @nodoc
-class __$$SurveyLoadedImplCopyWithImpl<$Res>
-    extends _$SurveyStateCopyWithImpl<$Res, _$SurveyLoadedImpl>
-    implements _$$SurveyLoadedImplCopyWith<$Res> {
-  __$$SurveyLoadedImplCopyWithImpl(
-      _$SurveyLoadedImpl _value, $Res Function(_$SurveyLoadedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? survey = null,
-  }) {
-    return _then(_$SurveyLoadedImpl(
-      null == survey
-          ? _value.survey
-          : survey // ignore: cast_nullable_to_non_nullable
-              as SurveyEntity,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SurveyLoadedImpl implements _SurveyLoaded {
-  const _$SurveyLoadedImpl(this.survey);
-
-  @override
-  final SurveyEntity survey;
-
-  @override
-  String toString() {
-    return 'SurveyState.surveyLoaded(survey: $survey)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SurveyLoadedImpl &&
-            (identical(other.survey, survey) || other.survey == survey));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, survey);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SurveyLoadedImplCopyWith<_$SurveyLoadedImpl> get copyWith =>
-      __$$SurveyLoadedImplCopyWithImpl<_$SurveyLoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<SurveyEntity> surveyList) allSurveyLoaded,
-    required TResult Function(SurveyEntity survey) surveyLoaded,
-    required TResult Function(String message) error,
-  }) {
-    return surveyLoaded(survey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult? Function(SurveyEntity survey)? surveyLoaded,
-    TResult? Function(String message)? error,
-  }) {
-    return surveyLoaded?.call(survey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult Function(SurveyEntity survey)? surveyLoaded,
-    TResult Function(String message)? error,
-    required TResult orElse(),
-  }) {
-    if (surveyLoaded != null) {
-      return surveyLoaded(survey);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_AllSurveyLoaded value) allSurveyLoaded,
-    required TResult Function(_SurveyLoaded value) surveyLoaded,
-    required TResult Function(_Error value) error,
-  }) {
-    return surveyLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult? Function(_SurveyLoaded value)? surveyLoaded,
-    TResult? Function(_Error value)? error,
-  }) {
-    return surveyLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult Function(_SurveyLoaded value)? surveyLoaded,
-    TResult Function(_Error value)? error,
-    required TResult orElse(),
-  }) {
-    if (surveyLoaded != null) {
-      return surveyLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SurveyLoaded implements SurveyState {
-  const factory _SurveyLoaded(final SurveyEntity survey) = _$SurveyLoadedImpl;
-
-  SurveyEntity get survey;
-  @JsonKey(ignore: true)
-  _$$SurveyLoadedImplCopyWith<_$SurveyLoadedImpl> get copyWith =>
+  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -710,8 +533,7 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<SurveyEntity> surveyList) allSurveyLoaded,
-    required TResult Function(SurveyEntity survey) surveyLoaded,
+    required TResult Function(List<SurveyEntity> surveyList) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -722,8 +544,7 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult? Function(SurveyEntity survey)? surveyLoaded,
+    TResult? Function(List<SurveyEntity> surveyList)? loaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -734,8 +555,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<SurveyEntity> surveyList)? allSurveyLoaded,
-    TResult Function(SurveyEntity survey)? surveyLoaded,
+    TResult Function(List<SurveyEntity> surveyList)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -750,8 +570,7 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_AllSurveyLoaded value) allSurveyLoaded,
-    required TResult Function(_SurveyLoaded value) surveyLoaded,
+    required TResult Function(_Loaded value) loaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -762,8 +581,7 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult? Function(_SurveyLoaded value)? surveyLoaded,
+    TResult? Function(_Loaded value)? loaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -774,8 +592,7 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_AllSurveyLoaded value)? allSurveyLoaded,
-    TResult Function(_SurveyLoaded value)? surveyLoaded,
+    TResult Function(_Loaded value)? loaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
