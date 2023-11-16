@@ -179,3 +179,98 @@ class TimerView extends StatelessWidget {
     );
   }
 }
+
+class NumberPopup extends StatelessWidget {
+  NumberPopup({
+    super.key,
+    required PageController pageController,
+    required this.survey,
+  }) : _pageController = pageController;
+
+  final AppNavigator navigate = sl<AppNavigator>();
+  final SurveyEntity survey;
+  final PageController _pageController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.maxFinite,
+      height: MediaQuery.of(context).size.height / 2,
+      padding: const EdgeInsets.all(24),
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Survey Question',
+            style: GoogleFonts.inter(
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const Gap(13),
+          const Divider(),
+          const Gap(14),
+          Expanded(
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 5,
+                childAspectRatio: 1,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+              ),
+              itemCount: survey.questions!.length,
+              itemBuilder: (context, index) {
+                QuestionEntity question = survey.questions![index];
+                return GestureDetector(
+                  onTap: () {
+                    navigate.back(context);
+                    _pageController.jumpToPage(index);
+                  },
+                  child: QuestionNumber(
+                    question: question,
+                    text: '${index + 1}',
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class QuestionNumber extends StatelessWidget {
+  const QuestionNumber({
+    super.key,
+    required this.question,
+    this.text,
+  });
+
+  final QuestionEntity question;
+  final String? text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: question.id != null ? const Color(0xff1FA0C9) : Colors.white,
+        borderRadius: BorderRadius.circular(4),
+        border: Border.all(
+          color: const Color(0xff1FA0C9),
+        ),
+      ),
+      child: Text(
+        text!,
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          fontSize: 18,
+          color: question.id == null ? const Color(0xff1FA0C9) : Colors.white,
+        ),
+      ),
+    );
+  }
+}
