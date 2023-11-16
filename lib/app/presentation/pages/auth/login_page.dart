@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/core.dart';
+import '../../../data/data.dart';
 import '../../../injection.dart';
 import '../../presentation.dart';
 
@@ -20,9 +21,35 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final AppNavigator navigator = sl<AppNavigator>();
+  final LocalProvider local = sl<LocalProvider>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool saveCred = false;
+
+  @override
+  void initState() {
+    super.initState();
+    loadCred();
+  }
+
+  void loadCred() async {
+    String? savedEmail = local.getEmail();
+    String? savedPassword = local.getPassword();
+    if (savedEmail != null && savedPassword != null) {
+      emailController.text = savedEmail;
+      passwordController.text = savedPassword;
+      saveCred = true;
+    }
+  }
+
+  void saveCredentials() async {
+    if (saveCred) {
+      local.setEmail(emailController.text);
+      local.setPassword(passwordController.text);
+    } else {
+      local.clear();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +57,12 @@ class _LoginPageState extends State<LoginPage> {
       listener: (context, state) {
         state.whenOrNull(
           loading: () {
-            CustomDialog.show(context, 'Loading');
+            CustomDialog.show(context);
           },
           success: () {
             navigator.goToSurvey(context);
           },
           error: (message) {
-            // show snackbar
             log(message);
           },
         );
@@ -61,7 +87,11 @@ class _LoginPageState extends State<LoginPage> {
                   emailController: emailController,
                   passwordController: passwordController,
                   saveCredential: saveCred,
-                  onChanged: (saveCred) {},
+                  onChanged: (value) {
+                    setState(() {
+                      saveCred = value ?? false;
+                    });
+                  },
                 ),
                 LoginButtons(
                   login: () {
@@ -71,6 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                             email: emailController.text.trim(),
                             password: passwordController.text.trim(),
                           );
+                      saveCredentials();
                     } else {
                       log('one of the field is still empty');
                     }

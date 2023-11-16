@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomDialog {
   CustomDialog._();
 
-  static show(BuildContext context, String text) {
+  static show(BuildContext context) {
     return showDialog(
         context: context,
         barrierDismissible: false,
@@ -12,7 +11,7 @@ class CustomDialog {
           return Dialog(
             elevation: 0,
             backgroundColor: Colors.transparent,
-            child: _customDialog(context, text),
+            child: _customDialog(context),
           );
         });
   }
@@ -21,32 +20,22 @@ class CustomDialog {
     Navigator.pop(context);
   }
 
-  static _customDialog(BuildContext context, String text) {
+  static _customDialog(BuildContext context) {
     return Center(
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white.withOpacity(0.5),
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(10)),
-        child: Padding(
-          padding: const EdgeInsets.all(30),
+        child: const Padding(
+          padding: EdgeInsets.all(30),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const CircularProgressIndicator(
-                strokeWidth: 10,
-                valueColor: AlwaysStoppedAnimation(Colors.black),
+              CircularProgressIndicator(
+                strokeWidth: 5,
+                valueColor: AlwaysStoppedAnimation(Color(0xff1FA0C9)),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 20),
-              ),
-              Text(
-                text,
-                style: GoogleFonts.inter(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-              )
             ],
           ),
         ),

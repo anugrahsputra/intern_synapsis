@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        width: double.infinity,
+        // width: double.infinity,
         height: 43,
         decoration: BoxDecoration(
             color: color,

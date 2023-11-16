@@ -21,13 +21,27 @@ class AppNavigator {
   }
 
   void back<T>(BuildContext context, {T? result}) {
-    if (canPop(context)) Navigator.of(context).pop(context);
+    if (canPop(context)) {
+      Navigator.of(context).pop(result);
+    }
   }
 
   void goToLogin(BuildContext context) {
     if (!canNavigate(context)) return;
 
-    Navigator.of(context).pushNamed(AppPage.login);
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      AppPage.login,
+      (route) => false,
+    );
+  }
+
+  void goToSplash(BuildContext context) {
+    if (!canNavigate(context)) return;
+
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      AppPage.splash,
+      (route) => false,
+    );
   }
 
   void goToSurvey(BuildContext context) {
@@ -37,5 +51,13 @@ class AppNavigator {
       AppPage.survey,
       (route) => false,
     );
+  }
+
+  void goToSurveyQuestion(BuildContext context, {required String surveyId}) {
+    if (!canNavigate(context)) return;
+
+    Navigator.of(context).pushNamed(AppPage.surveyQuestion, arguments: {
+      "surveyId": surveyId,
+    });
   }
 }

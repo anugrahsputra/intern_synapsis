@@ -13,10 +13,11 @@ import 'package:dio/src/dio_mixin.dart' as _i5;
 import 'package:dio/src/options.dart' as _i2;
 import 'package:dio/src/response.dart' as _i6;
 import 'package:dio/src/transformer.dart' as _i4;
-import 'package:intern_synapsis/app/core/core.dart' as _i13;
+import 'package:intern_synapsis/app/core/core.dart' as _i14;
 import 'package:intern_synapsis/app/data/data.dart' as _i7;
 import 'package:intern_synapsis/app/domain/domain.dart' as _i9;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:shared_preferences/shared_preferences.dart' as _i13;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -90,8 +91,8 @@ class _FakeUserModel_5 extends _i1.SmartFake implements _i7.UserModel {
         );
 }
 
-class _FakeEither_6<L, R> extends _i1.SmartFake implements _i8.Either<L, R> {
-  _FakeEither_6(
+class _FakeSurveyModel_6 extends _i1.SmartFake implements _i7.SurveyModel {
+  _FakeSurveyModel_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -100,9 +101,30 @@ class _FakeEither_6<L, R> extends _i1.SmartFake implements _i8.Either<L, R> {
         );
 }
 
-class _FakeAuthRepository_7 extends _i1.SmartFake
+class _FakeEither_7<L, R> extends _i1.SmartFake implements _i8.Either<L, R> {
+  _FakeEither_7(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeAuthRepository_8 extends _i1.SmartFake
     implements _i9.AuthRepository {
-  _FakeAuthRepository_7(
+  _FakeAuthRepository_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeSurveyRepository_9 extends _i1.SmartFake
+    implements _i9.SurveyRepository {
+  _FakeSurveyRepository_9(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1084,6 +1106,210 @@ class MockDio extends _i1.Mock implements _i10.Dio {
       ) as _i11.Future<_i6.Response<T>>);
 }
 
+/// A class which mocks [SharedPreferences].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSharedPreferences extends _i1.Mock implements _i13.SharedPreferences {
+  @override
+  Set<String> getKeys() => (super.noSuchMethod(
+        Invocation.method(
+          #getKeys,
+          [],
+        ),
+        returnValue: <String>{},
+        returnValueForMissingStub: <String>{},
+      ) as Set<String>);
+
+  @override
+  Object? get(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #get,
+          [key],
+        ),
+        returnValueForMissingStub: null,
+      ) as Object?);
+
+  @override
+  bool? getBool(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #getBool,
+          [key],
+        ),
+        returnValueForMissingStub: null,
+      ) as bool?);
+
+  @override
+  int? getInt(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #getInt,
+          [key],
+        ),
+        returnValueForMissingStub: null,
+      ) as int?);
+
+  @override
+  double? getDouble(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #getDouble,
+          [key],
+        ),
+        returnValueForMissingStub: null,
+      ) as double?);
+
+  @override
+  String? getString(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #getString,
+          [key],
+        ),
+        returnValueForMissingStub: null,
+      ) as String?);
+
+  @override
+  bool containsKey(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #containsKey,
+          [key],
+        ),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+
+  @override
+  List<String>? getStringList(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #getStringList,
+          [key],
+        ),
+        returnValueForMissingStub: null,
+      ) as List<String>?);
+
+  @override
+  _i11.Future<bool> setBool(
+    String? key,
+    bool? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setBool,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> setInt(
+    String? key,
+    int? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setInt,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> setDouble(
+    String? key,
+    double? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setDouble,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> setString(
+    String? key,
+    String? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setString,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> setStringList(
+    String? key,
+    List<String>? value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setStringList,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> remove(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #remove,
+          [key],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> commit() => (super.noSuchMethod(
+        Invocation.method(
+          #commit,
+          [],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<void> reload() => (super.noSuchMethod(
+        Invocation.method(
+          #reload,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+}
+
 /// A class which mocks [AuthProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
@@ -1123,6 +1349,91 @@ class MockAuthProvider extends _i1.Mock implements _i7.AuthProvider {
           ),
         )),
       ) as _i11.Future<_i7.UserModel>);
+
+  @override
+  _i11.Future<void> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+}
+
+/// A class which mocks [SurveyProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSurveyProvider extends _i1.Mock implements _i7.SurveyProvider {
+  @override
+  _i11.Future<List<_i7.SurveyModel>> getAllSurvey() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllSurvey,
+          [],
+        ),
+        returnValue:
+            _i11.Future<List<_i7.SurveyModel>>.value(<_i7.SurveyModel>[]),
+        returnValueForMissingStub:
+            _i11.Future<List<_i7.SurveyModel>>.value(<_i7.SurveyModel>[]),
+      ) as _i11.Future<List<_i7.SurveyModel>>);
+
+  @override
+  _i11.Future<_i7.SurveyModel> getSurvey(String? id) => (super.noSuchMethod(
+        Invocation.method(
+          #getSurvey,
+          [id],
+        ),
+        returnValue: _i11.Future<_i7.SurveyModel>.value(_FakeSurveyModel_6(
+          this,
+          Invocation.method(
+            #getSurvey,
+            [id],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i11.Future<_i7.SurveyModel>.value(_FakeSurveyModel_6(
+          this,
+          Invocation.method(
+            #getSurvey,
+            [id],
+          ),
+        )),
+      ) as _i11.Future<_i7.SurveyModel>);
+}
+
+/// A class which mocks [LocalProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLocalProvider extends _i1.Mock implements _i7.LocalProvider {
+  @override
+  _i11.Future<bool> setToken(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #setToken,
+          [token],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
+
+  @override
+  _i11.Future<bool> isLoggedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isLoggedIn,
+          [],
+        ),
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
 }
 
 /// A class which mocks [AuthRepository].
@@ -1130,7 +1441,7 @@ class MockAuthProvider extends _i1.Mock implements _i7.AuthProvider {
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRepository extends _i1.Mock implements _i9.AuthRepository {
   @override
-  _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>> login(
+  _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>> login(
     String? email,
     String? password,
   ) =>
@@ -1143,8 +1454,8 @@ class MockAuthRepository extends _i1.Mock implements _i9.AuthRepository {
           ],
         ),
         returnValue:
-            _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>>.value(
-                _FakeEither_6<_i13.Failure, _i9.UserEntity>(
+            _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.UserEntity>(
           this,
           Invocation.method(
             #login,
@@ -1155,8 +1466,8 @@ class MockAuthRepository extends _i1.Mock implements _i9.AuthRepository {
           ),
         )),
         returnValueForMissingStub:
-            _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>>.value(
-                _FakeEither_6<_i13.Failure, _i9.UserEntity>(
+            _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.UserEntity>(
           this,
           Invocation.method(
             #login,
@@ -1166,7 +1477,92 @@ class MockAuthRepository extends _i1.Mock implements _i9.AuthRepository {
             ],
           ),
         )),
-      ) as _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>>);
+      ) as _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>);
+
+  @override
+  _i11.Future<_i8.Either<_i14.Failure, void>> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i11.Future<_i8.Either<_i14.Failure, void>>.value(
+            _FakeEither_7<_i14.Failure, void>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i11.Future<_i8.Either<_i14.Failure, void>>.value(
+                _FakeEither_7<_i14.Failure, void>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i11.Future<_i8.Either<_i14.Failure, void>>);
+}
+
+/// A class which mocks [SurveyRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockSurveyRepository extends _i1.Mock implements _i9.SurveyRepository {
+  @override
+  _i11.Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>
+      getAllSurveys() => (super.noSuchMethod(
+            Invocation.method(
+              #getAllSurveys,
+              [],
+            ),
+            returnValue: _i11
+                .Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>.value(
+                _FakeEither_7<_i14.Failure, List<_i9.SurveyEntity>>(
+              this,
+              Invocation.method(
+                #getAllSurveys,
+                [],
+              ),
+            )),
+            returnValueForMissingStub: _i11
+                .Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>.value(
+                _FakeEither_7<_i14.Failure, List<_i9.SurveyEntity>>(
+              this,
+              Invocation.method(
+                #getAllSurveys,
+                [],
+              ),
+            )),
+          ) as _i11.Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>);
+
+  @override
+  _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>> getSurvey(
+          String? id) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getSurvey,
+          [id],
+        ),
+        returnValue:
+            _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.SurveyEntity>(
+          this,
+          Invocation.method(
+            #getSurvey,
+            [id],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.SurveyEntity>(
+          this,
+          Invocation.method(
+            #getSurvey,
+            [id],
+          ),
+        )),
+      ) as _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>>);
 }
 
 /// A class which mocks [LoginUsecase].
@@ -1176,18 +1572,18 @@ class MockLoginUsecase extends _i1.Mock implements _i9.LoginUsecase {
   @override
   _i9.AuthRepository get authRepository => (super.noSuchMethod(
         Invocation.getter(#authRepository),
-        returnValue: _FakeAuthRepository_7(
+        returnValue: _FakeAuthRepository_8(
           this,
           Invocation.getter(#authRepository),
         ),
-        returnValueForMissingStub: _FakeAuthRepository_7(
+        returnValueForMissingStub: _FakeAuthRepository_8(
           this,
           Invocation.getter(#authRepository),
         ),
       ) as _i9.AuthRepository);
 
   @override
-  _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>> call(
+  _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>> call(
     String? email,
     String? password,
   ) =>
@@ -1200,8 +1596,8 @@ class MockLoginUsecase extends _i1.Mock implements _i9.LoginUsecase {
           ],
         ),
         returnValue:
-            _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>>.value(
-                _FakeEither_6<_i13.Failure, _i9.UserEntity>(
+            _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.UserEntity>(
           this,
           Invocation.method(
             #call,
@@ -1212,8 +1608,8 @@ class MockLoginUsecase extends _i1.Mock implements _i9.LoginUsecase {
           ),
         )),
         returnValueForMissingStub:
-            _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>>.value(
-                _FakeEither_6<_i13.Failure, _i9.UserEntity>(
+            _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.UserEntity>(
           this,
           Invocation.method(
             #call,
@@ -1223,5 +1619,96 @@ class MockLoginUsecase extends _i1.Mock implements _i9.LoginUsecase {
             ],
           ),
         )),
-      ) as _i11.Future<_i8.Either<_i13.Failure, _i9.UserEntity>>);
+      ) as _i11.Future<_i8.Either<_i14.Failure, _i9.UserEntity>>);
+}
+
+/// A class which mocks [GetAllSurveyUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetAllSurveyUsecase extends _i1.Mock
+    implements _i9.GetAllSurveyUsecase {
+  @override
+  _i9.SurveyRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeSurveyRepository_9(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeSurveyRepository_9(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i9.SurveyRepository);
+
+  @override
+  _i11.Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>> call() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [],
+        ),
+        returnValue:
+            _i11.Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>.value(
+                _FakeEither_7<_i14.Failure, List<_i9.SurveyEntity>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i11.Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>.value(
+                _FakeEither_7<_i14.Failure, List<_i9.SurveyEntity>>(
+          this,
+          Invocation.method(
+            #call,
+            [],
+          ),
+        )),
+      ) as _i11.Future<_i8.Either<_i14.Failure, List<_i9.SurveyEntity>>>);
+}
+
+/// A class which mocks [GetSurveyUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGetSurveyUsecase extends _i1.Mock implements _i9.GetSurveyUsecase {
+  @override
+  _i9.SurveyRepository get repository => (super.noSuchMethod(
+        Invocation.getter(#repository),
+        returnValue: _FakeSurveyRepository_9(
+          this,
+          Invocation.getter(#repository),
+        ),
+        returnValueForMissingStub: _FakeSurveyRepository_9(
+          this,
+          Invocation.getter(#repository),
+        ),
+      ) as _i9.SurveyRepository);
+
+  @override
+  _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>> call(String? id) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #call,
+          [id],
+        ),
+        returnValue:
+            _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.SurveyEntity>(
+          this,
+          Invocation.method(
+            #call,
+            [id],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>>.value(
+                _FakeEither_7<_i14.Failure, _i9.SurveyEntity>(
+          this,
+          Invocation.method(
+            #call,
+            [id],
+          ),
+        )),
+      ) as _i11.Future<_i8.Either<_i14.Failure, _i9.SurveyEntity>>);
 }

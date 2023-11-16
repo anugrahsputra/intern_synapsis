@@ -27,17 +27,48 @@ Future<void> init() async {
   sl.registerSingleton<AppNavigator>(AppNavigator());
 
   /*------------------> DATA <------------------*/
-  sl.registerLazySingleton<AuthProvider>(() => AuthProviderImpl(dio: sl()));
+  sl.registerLazySingleton<AuthProvider>(() =>
+      AuthProviderImpl(dio: sl<Dio>(), localProvider: sl<LocalProvider>()));
+  sl.registerLazySingleton<SurveyProvider>(() =>
+      SurveyProviderImpl(dio: sl<Dio>(), localProvider: sl<LocalProvider>()));
+  sl.registerLazySingleton<LocalProvider>(
+      () => LocalProviderImpl(sharedPreferences: sharedPref));
 
   /*------------------> DOMAIN <------------------*/
   /* Repository */
   sl.registerLazySingleton<AuthRepository>(
-      () => AuthRepositoryImpl(authProvider: sl<AuthProvider>()));
+    () => AuthRepositoryImpl(authProvider: sl<AuthProvider>()),
+  );
+  sl.registerLazySingleton<SurveyRepository>(
+    () => SurveyRepositoryImpl(surveyProvider: sl<SurveyProvider>()),
+  );
 
   /* Usecase */
   sl.registerLazySingleton(
-      () => LoginUsecase(authRepository: sl<AuthRepository>()));
+    () => LoginUsecase(authRepository: sl<AuthRepository>()),
+  );
+  sl.registerLazySingleton(
+      () => LogoutUsecase(authRepository: sl<AuthRepository>()));
+
+  sl.registerLazySingleton(
+    () => GetAllSurveyUsecase(repository: sl<SurveyRepository>()),
+  );
+  sl.registerLazySingleton(
+    () => GetSurveyUsecase(repository: sl<SurveyRepository>()),
+  );
 
   /*------------------> CUBITS <------------------*/
-  sl.registerFactory(() => AuthCubit(usecase: sl<LoginUsecase>()));
+  sl.registerFactory(
+    () => AuthCubit(
+      loginUsecase: sl<LoginUsecase>(),
+      logoutUsecase: sl<LogoutUsecase>(),
+    ),
+  );
+  sl.registerFactory(
+    () => SurveyCubit(
+      getAllSurveyUsecase: sl<GetAllSurveyUsecase>(),
+    ),
+  );
+  sl.registerFactory(
+      () => SurveyQuestionCubit(getSurveyUsecase: sl<GetSurveyUsecase>()));
 }
